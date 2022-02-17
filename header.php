@@ -4,7 +4,11 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Blog Site Template">
+	<meta name="author" content="carlo">
+	<link rel="shortcut icon" href="/wp-content/themes/testtheme/assets/images/logo.png">
+
     
 	<?php
 	wp_head();
@@ -16,7 +20,7 @@
 <body>
     
     <header class="header text-center">	    
-	    <a class="site-title pt-lg-4 mb-0" href="index.html">SiteName.dev</a>
+	    <a class="site-title pt-lg-4 mb-0" href="index.html">Site Name</a>
         
 	    <nav class="navbar navbar-expand-lg navbar-dark" >
            
@@ -25,7 +29,28 @@
 			</button>
 
 			<div id="navigation" class="collapse navbar-collapse flex-column" >
-				<img class="mb-3 mx-auto logo" src="images/logo.png" alt="logo" >			
+
+				<?php
+				if(function_exists('the_custom_logo')){
+					the_custom_logo();
+				}
+				?>
+
+				<img class="mb-3 mx-auto logo" src="images/logo.png" alt="logo" >	
+				
+				
+
+				<?php
+					wp_nav_menu(
+						array(
+							'menu' => 'primary',
+							'container' => '',
+							'theme_location' => 'primary',
+							'items_wrap' => '<ul id="" class="navbar-nav flex-column text-sm-center text-md-left">%3$s</ul>',
+						)
+
+					);
+				?>
 				
 				<ul class="navbar-nav flex-column text-sm-center text-md-left">
 					<li class="nav-item active">
@@ -56,3 +81,8 @@
 			</div>
 		</nav>
     </header>
+
+	<div class="main-wrapper">
+	    <header class="page-title theme-bg-light text-center gradient py-5">
+			<h1 class="heading"><?php the_title(); ?></h1>
+		</header>

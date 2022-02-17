@@ -1,12 +1,28 @@
 <?php
 
+//theme support
 function testtheme_theme_support(){
 add_theme_support('title-tag');
+add_theme_support('custom-logo');
 }
 
 add_action('after_setup_theme', 'testtheme_theme_support');
 
+//menus
+function testtheme_menus(){
 
+    $locations = array(
+        'primary' => "Desktop Primary Left Sidebar",
+        'footer' => "Footer Menu Items"
+    );
+
+    register_nav_menus($locations);
+
+}
+
+add_action('init', 'testtheme_menus');
+
+//header
 function testtheme_register_styles(){
     
     $version= wp_get_theme()->get('Version');
@@ -19,7 +35,7 @@ function testtheme_register_styles(){
 
 add_action('wp_enqueue_scripts', 'testtheme_register_styles');
 
-
+//footer
 function testtheme_register_scripts(){
 
     wp_enqueue_script('testtheme-jquery', 'https://code.jquery.com/jquery-3.4.1.slim.min.js', array(), true);
