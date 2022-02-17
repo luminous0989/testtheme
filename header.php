@@ -20,7 +20,7 @@
 <body>
     
     <header class="header text-center">	    
-	    <a class="site-title pt-lg-4 mb-0" href="index.html">Site Name</a>
+	    <a class="site-title pt-lg-4 mb-0" href="index.html">Test Theme</a>
         
 	    <nav class="navbar navbar-expand-lg navbar-dark" >
            
@@ -29,14 +29,16 @@
 			</button>
 
 			<div id="navigation" class="collapse navbar-collapse flex-column" >
-
+				<!-- logo -->
 				<?php
 				if(function_exists('the_custom_logo')){
-					the_custom_logo();
+					$custom_logo_id = get_theme_mod('custom_logo');
+					$logo = wp_get_attachment_image_src($custom_logo_id);
+
 				}
 				?>
 
-				<img class="mb-3 mx-auto logo" src="images/logo.png" alt="logo" >	
+				<img class="mb-3 mx-auto logo" src="<?php echo $logo[0] ?>" alt="logo" >	
 				
 				
 
@@ -81,6 +83,7 @@
 			</div>
 		</nav>
     </header>
+
 
 	<div class="main-wrapper">
 	    <header class="page-title theme-bg-light text-center gradient py-5">
