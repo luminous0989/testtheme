@@ -32,13 +32,15 @@
 
 			<div id="navigation" class="collapse navbar-collapse flex-column" >
 				<!-- logo -->
-				<?php
+				<a href="<?php the_permalink(); ?> "><?php
 				if(function_exists('the_custom_logo')){
 					$custom_logo_id = get_theme_mod('custom_logo');
 					$logo = wp_get_attachment_image_src($custom_logo_id);
 
 				}
 				?>
+				</a>
+				
 
 				<img class="mb-3 mx-auto logo" src="<?php echo $logo[0] ?>" alt="logo" >	
 				
@@ -63,6 +65,11 @@
 				</ul>
 
 			</div>
+
+			<?php
+				dynamic_sidebar('sidebar-1');
+			?>
+			
 		</nav>
     </header>
 
